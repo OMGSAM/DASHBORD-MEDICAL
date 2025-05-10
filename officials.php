@@ -1,8 +1,10 @@
 <?php include 'server/server.php' ?>
 <?php 
+$c=1;
+
 	$query = "SELECT o.name     AS 'official',
 					c.title     AS 'chairmanship',
-					p.position  AS 'position',
+					o.position  AS 'position',
 					o.termstart AS 'term_start',
 					o.status 	AS 'status',
 					p.order 	AS 'rank_order'
@@ -67,22 +69,39 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 												<tr class="text-primary">
 														<th scope="col">DOCTOR</th>
 														<th scope="col">Spécialité</th>
-														<th scope="col">Position</th>
+														<th scope="col">Mobile</th>
 														<th scope="col">Term Start</th>
 														<th scope="col">Status</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php foreach($officials as $row): ?>
+
+<?php 
+					$images = [
+        "assets/img/masili.jpg",
+        "assets/img/osos.png",
+        "assets/img/mmm.webp",
+		"assets/img/oka.jpg","assets/img/sqs.png","assets/img/or.jpg"
+
+    ];
+	 
+
+				 $imgIndex = $c % count($images); // 0, 1, 2, 0, 1, 2, ...
+                        $img = $images[$imgIndex];
+						 $c++;
+					?>	
+
 													<tr>
 														<td>
 															<div class="avatar avatar-sm">
-																<span class="avatar-title rounded-circle border border-white" style="background-color: lightseagreen"><?= ucwords($row['official'][0]) ?></span>
-															</div>
+<span class="avatar-title rounded-circle border border-white" style="background-color: lightseagreen; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;">
+   <img src="<?=$img ?>" alt="imaage" style="width: 100%; height: 100%; object-fit: cover;">
+</span>															</div>
 															<?= ucwords($row['official']) ?>
 														</td>
 														<td><?= ucwords($row['chairmanship']) ?></td>
-														<td><?= ucwords($row['position']) ?></td>
+														<td><?= $row['position'] ?></td>
 														<td><?= ucwords($row['term_start']) ?></td>
 														<td>
 															<?php if($row['status']=='Active'): ?>
@@ -92,7 +111,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 															<?php endif ?>
 														</td>
 													</tr>
-												<?php endforeach ?>
+												<?php   endforeach ?>
 											</tbody>
 										</table>
 									</div>

@@ -69,28 +69,47 @@
 											<thead>
 												<tr class="text-primary">
 													<th scope="col">Resident Name</th>
-													<th scope="col">Birthdate</th>
+													<th scope="col">Email</th>
 													<th scope="col">Age</th>
-													<th scope="col">Civil Status</th>
-                                                    <th scope="col">Gender</th>
+													<th scope="col">Speciality</th>
+                                                    <th scope="col">Mobile</th>
 													<!-- <th scope="col">Mission</th> -->
 													<th scope="col">Action</th>
 												</tr>
 											</thead>
 											<tbody>
 												<?php if(!empty($resident)): ?>
-													<?php $no=1; foreach($resident as $row): ?>
+													<?php $no=1; foreach($resident as $row): 
+														
+														 
+														?>
                                                         <tr>
                                                             <td>
                                                                 <div class="avatar avatar-sm">
-                                                                    <span class="avatar-title rounded-circle border border-white" style="background-color: lightseagreen"><?= ucwords(strtoupper($row['lastname'][0].$row['firstname'][0])) ?></span>
-                                                                </div>
+																	 
+					<?php 
+					$images = [
+        "assets/img/masili.jpg",
+        "assets/img/osos.png",
+        "assets/img/qoq.png",
+		"assets/img/oka.jpg","assets/img/oo.png"
+    ];
+
+				 $imgIndex = $row['id'] % count($images); // 0, 1, 2, 0, 1, 2, ...
+                        $img = $images[$imgIndex];
+					?>								
+																	<span class="avatar-title rounded-circle border border-white" style="background-color: lightseagreen; width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; overflow: hidden;">
+   <img src="<?=$img ?>" alt="imaage" style="width: 100%; height: 100%; object-fit: cover;">
+</span>
+
+                                                                     
+ 																</div>
                                                                 <?= ucwords(strtoupper($row['lastname'].''.$row['firstname'].' '.$row['middlename'])) ?>
                                                             </td>
-                                                            <td><?= $row['birthdate'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
                                                             <td><?= $row['age'] ?></td>
-                                                            <td><?= $row['civilstatus'] ?></td>
-                                                            <td><?= $row['gender'] ?></td>
+                                                            <td><?= $row['departement'] ?></td>
+                                                            <td><?= $row['mobile'] ?></td>
                                                             
                                                             <td>
 																<a href="resident_update_form.php?id=<?= $row['id'] ?>" class="btn btn-link" data-toggle="tooltip" data-placement="top" title="Update">

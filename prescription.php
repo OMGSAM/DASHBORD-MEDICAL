@@ -90,7 +90,7 @@
 															</td>
 															<td><?= ucwords($row['end_date']) ?></td>
 <td>
-    <span class="badge badge-warning" style="width:150px; font-size: 0.8rem; font-weight: bold; padding: 8px;">
+    <span class="badge badge-warning" style="width:150px; font-size: 0.8rem; font-weight: bold; padding: 6px;">
         <?= ucwords($row['dosage']) ?>
     </span>
 </td>
@@ -99,8 +99,13 @@
 																<td>
 																	<?php if($row['doctor'] !=''): ?>
 																		<a href="prescription_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
-																			<i class="fa fa-edit mr-2"></i>Update
+																			<i class="fa fa-edit mr-2">Edit</i>
+														
 																		</a>
+																		<a href="prescriptionpdf.php?id_prescription=<?=$row['id']; ?>" title="Générer la presc PDF">
+                        <i class="fa-solid fa-file-pdf invoice-icon">Generate </i>
+                    </a>
+
 																	<?php else: ?>
 																		<a href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
 																			<i class="fa fa-file-medical-alt mr-2"></i>Details
@@ -139,10 +144,10 @@
 
 		function Export(){
 			// should have policy like 2 weeks retention of records and scope for export to csv
-			var conf = confirm("Export appointment to CSV?");
-			var stmt = "SELECT * FROM tbl_appointment";
-			var tblHeader = 'No,Resident Name,Age,Staff In Charge,Request Date,Concern,Appointment Type,Status,Appointment Date,Remarks';
-			var fileName = "appointment";
+			var conf = confirm("Export prescription to CSV?");
+			var stmt = "SELECT * FROM prescription";
+			var tblHeader = 'No, patient,doctor,medication ,dosage ,end_date,debut,instructions,created_at,updated_at ';
+			var fileName = "prescription";
 			if(conf){
 				window.open(`export.php?query=${stmt}&tblHeader=${tblHeader}&fileName=${fileName}`, '_blank');
 			}

@@ -8,6 +8,10 @@
 	while($row = $result->fetch_assoc()){
 		$appointment[] = $row; 
 	}
+    // echo "<pre>";
+    // print_r($appointment);
+    // echo "</pre>";
+
 ?>
 
 <!DOCTYPE html>

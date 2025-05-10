@@ -1,7 +1,6 @@
-/*
-
+ 
 <?php
-#require "twilio-php/Services/Twilio.php"; 
+require "twilio-php/Services/Twilio.php"; 
 
 
  
@@ -25,7 +24,4 @@ try {
 } 
 
 ?> 
-?>
-
-
-*/
+ 

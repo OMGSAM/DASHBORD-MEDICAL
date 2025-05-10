@@ -88,7 +88,7 @@
 															</td>
 															<td><?= ucwords($row['motif']) ?></td>
 <td>
-    <span class="badge badge-warning" style="width:150px; font-size: 0.8rem; font-weight: bold; padding: 8px;">
+    <span class="badge badge-warning" style="width:150px; font-size: 0.8rem; font-weight: bold; padding: 6px;">
         <?= number_format($row['montant'], 2) . " DH" ?>
     </span>
 </td>
@@ -99,6 +99,10 @@
 																		<a href="facture_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
 																			<i class="fa fa-edit mr-2"></i>Update
 																		</a>
+																		<a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF">
+                        <i class="fa-solid fa-file-pdf invoice-icon">Generate facture</i>
+                    </a>
+
 																	<?php else: ?>
 																		<a href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
 																			<i class="fa fa-file-medical-alt mr-2"></i>Details
@@ -130,17 +134,17 @@
 	<script src="assets/js/plugin/datatables/datatables.min.js"></script>
     <script>
         $(document).ready(function() {
-            var oTable = $('#appointment').DataTable({
+            var oTable = $('#facture').DataTable({
 				"order": [[ 4, "desc" ]]
             });
         });
 
 		function Export(){
 			// should have policy like 2 weeks retention of records and scope for export to csv
-			var conf = confirm("Export appointment to CSV?");
-			var stmt = "SELECT * FROM tbl_appointment";
-			var tblHeader = 'No,Resident Name,Age,Staff In Charge,Request Date,Concern,Appointment Type,Status,Appointment Date,Remarks';
-			var fileName = "appointment";
+			var conf = confirm("Export facture to CSV?");
+			var stmt = "SELECT * FROM facture";
+			var tblHeader = 'id,patient,doctor,montant,date_facture, motif';
+			var fileName = "facture";
 			if(conf){
 				window.open(`export.php?query=${stmt}&tblHeader=${tblHeader}&fileName=${fileName}`, '_blank');
 			}

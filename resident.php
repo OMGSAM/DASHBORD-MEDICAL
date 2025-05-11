@@ -8,13 +8,13 @@
 		$resident[] = $row; 
 	}
 
-    $query1 = "SELECT * FROM tblpurok ORDER BY `name`";
-    $result1 = $conn->query($query1);
+    // $query1 = "SELECT * FROM tblpurok ORDER BY `name`";
+    // $result1 = $conn->query($query1);
 
-    $purok = array();
-	while($row = $result1->fetch_assoc()){
-		$purok[] = $row; 
-	}
+    // $purok = array();
+	// while($row = $result1->fetch_assoc()){
+	// 	$purok[] = $row; 
+	// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

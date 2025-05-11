@@ -14,7 +14,7 @@
     
     $query = "INSERT INTO facture (patient,montant,doctor,motif,date_facture) 
                 VALUES ('$patient','$montant','$doctor','$motif','$create_date')";
-    echo $query;
+    
     $result = $conn->query($query);
     $_SESSION['message'] = 'Failed to add Facture!';
     $_SESSION['success'] = 'danger';

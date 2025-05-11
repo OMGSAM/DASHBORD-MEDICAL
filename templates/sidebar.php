@@ -47,9 +47,20 @@ $current_page = PageName();
                                 <p>Medical Supplies</p>
                             </a>
                         </li>
+
+                        
+
                 <!-- end of medical consumables -->
 
+     <li class="nav-item <?= $current_page=='patient.php' || $current_page=='patientform.php'  ? 'active' : null ?>">
+                            <a href="patient.php" >
+                                
+                               <i style="color: #42f5da; font-size: 25px;" class="fa-solid fa-bed"></i> <!-- Icone de médecin, utilisée comme icône de patient -->
+                     
 
+                                <p>Patients</p>
+                            </a>
+                        </li>
                 
                 
                 <!-- appointments -->
@@ -60,12 +71,16 @@ $current_page = PageName();
                     <h4 class="text-section">APPOINTMENTS</h4>
                 </li>
                         <!-- create appointment -->
+                       
+                     
+                       
                         <li class="nav-item <?= $current_page=='appointment.php' || $current_page=='appointment_detail.php' || $current_page=='appointment_add_form.php' || $current_page=='appointment_update_form.php' ? 'active' : null ?>">
                             <a href="appointment.php" >
                                <i style="color: #42f5da; font-size: 25px;" class="fa-solid fa-calendar-check"></i>
                                 <p>Appointment</p>
                             </a>
                         </li>
+                        
 
                         <li class="nav-item <?= $current_page=='facture.php' || $current_page=='facture_detail.php' || $current_page=='facture_add_form.php' || $current_page=='facture_update_form.php' ? 'active' : null ?>">
                             <a href="facture.php" >

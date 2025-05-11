@@ -1,6 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	$query = "SELECT * FROM facture ORDER BY id desc ";
+	$query = "SELECT * FROM patient ORDER BY id desc ";
     $result = $conn->query($query);
 
     $appointment = array();
@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Les Factures -  Health Service System</title>
+	<title>Les Patients -  Health Service System</title>
 	    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -40,13 +40,13 @@
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title text-primary">
-											<h1>FACTURES RECORD</h1>
+											<h1>PATIENTS RECORD</h1>
 										</div>
 										
 										<div class="card-tools">
-											<a href="facture_add_form.php" class="btn btn-primary mr-1">
+											<a href="patientform.php" class="btn btn-primary mr-1">
 												<i class="fa fa-plus mr-2"></i>
-												Factures
+												Patients
 											</a>
 											<?php if(isset($_SESSION['username']) && $_SESSION['role']!='resident'): ?>
 												<button onclick="Export()" class="btn btn-default btn-default">
@@ -63,11 +63,11 @@
 										<table id="appointment" class="display table">
 											<thead>
 												<tr class="text-primary">
-													<th scope="col">Patient</th>
-													<th scope="col">date_facture</th>
-													<th scope="col">doctor</th>
-                                                    <th scope="col">motif</th>
-													<th scope="col">Montant</th>
+													<th scope="col">Nom</th>
+													<th scope="col">email</th>
+													<th scope="col">phone</th>
+                                                    <th scope="col">adresse</th>
+													<th scope="col">sexe</th>
 			
 													 
 													<?php if(isset($_SESSION['username']) && $_SESSION['role'] !='resident'): ?>
@@ -79,19 +79,19 @@
 												<?php if(!empty($appointment)): ?>
 													<?php foreach($appointment as $row): ?>
 														<tr>
-															<td><?= ucwords($row['patient']) ?></td>
-															<td><?= ucwords($row['date_facture']) ?></td>
+															<td><?= ucwords($row['nom']) ?></td>
+															<td><?= ucwords($row['email']) ?></td>
 															<td>
-																<?php if($row['doctor']==''): ?>
+																<?php if($row['nom']==''): ?>
 																	<span class="badge text-primary" style="width:90px;">Unassigned</span>
 																<?php else:?>
-																	<?= ucwords($row['doctor']) ?>
+																	<?= ucwords($row['telephone']) ?>
 																<?php endif ?>
 															</td>
-															<td><?= ucwords($row['motif']) ?></td>
+															<td><?= ucwords($row['adresse']) ?></td>
 <td>
   <span class="badge badge-warning" style="width:150px; font-size: 1rem; font-weight: bold; padding: 6px; background-color: #42f5da; !important; color: black !important;">
-    <?= number_format($row['montant'], 2) . " DH" ?>
+    <?= ($row['sexe']) ?>
 </span>
 
 
@@ -100,26 +100,24 @@
 															 
 															<?php if(isset($_SESSION['username']) && $_SESSION['role'] !='resident'): ?>
 																<td>
-																	<?php if($row['doctor'] !=''): ?>
+																	<?php if($row['nom'] !=''): ?>
 																		<!-- Update Button -->
   <div style="display: flex; align-items: center; gap: 10px;">
 
     <!-- Update Button -->
-    <a href="facture_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link" style="text-decoration: none; color:yellowgreen;">
+    <a href="patientform.php?id=<?= $row['id'] ?>" class="btn btn-link" style="text-decoration: none; color:yellowgreen;">
         <i class="fa fa-edit" style="font-size: 30px; margin-right: 5px;"></i>  
     </a>
 
     <!-- Generate PDF -->
-    <a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF" style="text-decoration: none; color: white;">
-        <i class="fa-solid fa-file-pdf" style="font-size: 30px; margin-right: 5px;"></i>    
-    </a>
+   
+<a href="deletepatient.php?id=<?= $row['id']; ?>" title="Supprimer la facture" style="text-decoration: none; color: red;">
+    <i class="fa-solid fa-trash" style="font-size: 30px;"></i>
+</a>
 
     <!-- Inform Patient -->
 	  
-
-    <a  href="test.php?id=<?= $row['id']; ?>"   style="text-decoration: none; color: gold;">
-        <i class="fab fa-telegram-plane" style="font-size: 30px; margin-right: 5px;"></i>    
-    </a>
+ 
 
 </div>
 

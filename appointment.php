@@ -1,4 +1,17 @@
 <?php include 'server/server.php' ?>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+<style>
+	<style>
+    .display table td, .display table th {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: black;
+    }
+</style>
+
+</style>
 <?php 
 	$query = "SELECT * FROM tbl_appointment ORDER BY id desc ";
     $result = $conn->query($query);
@@ -64,7 +77,7 @@
 													<th scope="col">Resident Name</th>
 													<th scope="col">Age</th>
 													<th scope="col">Staff In Charge</th>
-													<th scope="col">Request Date</th>
+													<!-- <th scope="col">Request Date</th> -->
 													<th scope="col">Appointment type</th>
 													<th scope="col">Appointment Date</th>
 													<th scope="col">Status</th>
@@ -86,7 +99,7 @@
 																	<?= ucwords($row['staff_in_charge']) ?>
 																<?php endif ?>
 															</td>
-															<td><?= ucwords($row['request_date']) ?></td>
+															 
 															<td><?= ucwords($row['appointment_type']) ?></td>
 															<td>
 																<?php if(!$row['appointment_date']): ?>
@@ -106,12 +119,12 @@
 															<?php if(isset($_SESSION['username']) && $_SESSION['role'] !='resident'): ?>
 																<td>
 																	<?php if($row['status'] !='completed'): ?>
-																		<a href="appointment_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
-																			<i class="fa fa-edit mr-2"></i>Update
-																		</a>
+																		
+																		<a href="appointment_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment"  class="btn btn-link" style="text-decoration: none; color:yellowgreen;"> <i class="fa fa-edit" style="font-size: 30px; margin-right: 5px;"></i> </a>
+
 																	<?php else: ?>
-																		<a href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
-																			<i class="fa fa-file-medical-alt mr-2"></i>Details
+																		<a style="text-decoration: none; color:orange;" href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
+																			<i class="fa fa-file-medical-alt mr-2" style="font-size: 30px; margin-right: 5px;"></i> 
 																		</a>
 																	<?php endif ?>
 																</td>

@@ -98,14 +98,16 @@
 															<?php if(isset($_SESSION['username']) && $_SESSION['role'] !='resident'): ?>
 																<td>
 																	<?php if($row['doctor'] !=''): ?>
+																		  <div style="display: flex; align-items: center; gap: 10px;">
+
 																		<a href="prescription_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
-																			<i class="fa fa-edit mr-2">Edit</i>
+																			<i class="fa fa-edit mr-2"  style="font-size: 30px; margin-right: 5px;"></i>
 														
 																		</a>
-																		<a href="prescriptionpdf.php?id_prescription=<?=$row['id']; ?>" title="Générer la presc PDF">
-                        <i class="fa-solid fa-file-pdf invoice-icon">Generate </i>
+																		<a  style="text-decoration: none; color: gold;" href="prescriptionpdf.php?id_prescription=<?=$row['id']; ?>" title="Générer la presc PDF">
+                        <i class="fa-solid fa-file-pdf invoice-icon"  style="font-size: 30px; margin-right: 5px;" ></i>
                     </a>
-
+																	</div>
 																	<?php else: ?>
 																		<a href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
 																			<i class="fa fa-file-medical-alt mr-2"></i>Details

@@ -88,20 +88,41 @@
 															</td>
 															<td><?= ucwords($row['motif']) ?></td>
 <td>
-    <span class="badge badge-warning" style="width:150px; font-size: 0.8rem; font-weight: bold; padding: 6px;">
-        <?= number_format($row['montant'], 2) . " DH" ?>
-    </span>
+  <span class="badge badge-warning" style="width:150px; font-size: 1rem; font-weight: bold; padding: 6px; background-color: #42f5da; !important; color: black !important;">
+    <?= number_format($row['montant'], 2) . " DH" ?>
+</span>
+
+
+
 </td>
 															 
 															<?php if(isset($_SESSION['username']) && $_SESSION['role'] !='resident'): ?>
 																<td>
 																	<?php if($row['doctor'] !=''): ?>
-																		<a href="facture_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
-																			<i class="fa fa-edit mr-2"></i>Update
-																		</a>
-																		<a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF">
-                        <i class="fa-solid fa-file-pdf invoice-icon">Generate facture</i>
-                    </a>
+																		<!-- Update Button -->
+  <div style="display: flex; align-items: center; gap: 10px;">
+
+    <!-- Update Button -->
+    <a href="facture_update_form.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link" style="text-decoration: none; color:yellowgreen;">
+        <i class="fa fa-edit" style="font-size: 30px; margin-right: 5px;"></i>  
+    </a>
+
+    <!-- Generate PDF -->
+    <a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF" style="text-decoration: none; color: white;">
+        <i class="fa-solid fa-file-pdf" style="font-size: 30px; margin-right: 5px;"></i>    
+    </a>
+
+    <!-- Inform Patient -->
+	  
+
+    <a  href="test.php?id=<?= $row['id']; ?>"   style="text-decoration: none; color: gold;">
+        <i class="fab fa-telegram-plane" style="font-size: 30px; margin-right: 5px;"></i>    
+    </a>
+
+</div>
+
+
+
 
 																	<?php else: ?>
 																		<a href="appointment_detail.php?id=<?= $row['id'] ?>&tbl=tbl_appointment&page=appointment" class="btn btn-link">
@@ -133,6 +154,8 @@
 	<?php include 'templates/footer.php' ?>
 	<script src="assets/js/plugin/datatables/datatables.min.js"></script>
     <script>
+ 
+
         $(document).ready(function() {
             var oTable = $('#facture').DataTable({
 				"order": [[ 4, "desc" ]]

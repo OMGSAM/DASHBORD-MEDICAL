@@ -205,4 +205,5 @@ $current_page = PageName();
     .sidebar.sidebar-style-2 .nav.nav-primary > .nav-item.active > a {
         background-color: lightseagreen !important;
     }
+  
 </style>

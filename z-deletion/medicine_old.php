@@ -14,7 +14,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Medicine Information -  Barangay Management System</title>
+	<title>Medicine Information -  Management System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

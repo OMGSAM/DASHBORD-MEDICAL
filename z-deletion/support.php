@@ -1,4 +1,4 @@
-<?php include 'server/server.php' ?>
+<?php include '../server/server.php' ?>
 <?php
     $query = "SELECT * FROM tbl_support ORDER BY `date` DESC";
     $result = $conn->query($query);
@@ -12,18 +12,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>
-	<title>Support Management -  Barangay Healthcare System</title>
+	<?php include '../templates/header.php' ?>
+	<title>Support Management -   Healthcare System</title>
 </head>
 <body>
-<?php include 'templates/loading_screen.php' ?>
+<?php include '../templates/loading_screen.php' ?>
 	<div class="wrapper">
 		<!-- Main Header -->
-		<?php include 'templates/main-header.php' ?>
+	 	<!-- <?php include '../templates/main-header.php' ?> -->
 		<!-- End Main Header -->
 
 		<!-- Sidebar -->
-		<?php include 'templates/sidebar.php' ?>
+		<?php include '../templates/sidebar.php' ?>
 		<!-- End Sidebar -->
 
 		<div class="main-panel">
@@ -117,12 +117,12 @@
 			</div>
 
 			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
+			<?php include '../templates/main-footer.php' ?>
 			<!-- End Main Footer -->
 			
 		</div>
 		
 	</div>
-	<?php include 'templates/footer.php' ?>
+	<?php include '../templates/footer.php' ?>
 </body>
 </html>

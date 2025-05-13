@@ -25,7 +25,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Barangay Purok -  Barangay Management System</title>
+	<title>     Management System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

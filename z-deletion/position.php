@@ -1,4 +1,4 @@
-<?php include 'server/server.php' ?>
+<?php include '../server/server.php' ?>
 <?php
     $query = "SELECT * FROM tbl_position ORDER BY `order`";
     $result = $conn->query($query);
@@ -11,18 +11,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>
-	<title>Barangay Position -  Barangay Management System</title>
+	<?php include '../templates/header.php' ?>
+	<title>  Position -    Management System</title>
 </head>
 <body>
-<?php include 'templates/loading_screen.php' ?>
+<?php include '../templates/loading_screen.php' ?>
 	<div class="wrapper">
 		<!-- Main Header -->
-		<?php include 'templates/main-header.php' ?>
+		<?php include '../templates/main-header.php' ?>
 		<!-- End Main Header -->
 
 		<!-- Sidebar -->
-		<?php include 'templates/sidebar.php' ?>
+		<?php include '../templates/sidebar.php' ?>
 		<!-- End Sidebar -->
 
 		<div class="main-panel">
@@ -50,7 +50,7 @@
                             <div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Barangay Positions</div>
+										<div class="card-title"> Positions</div>
 										<div class="card-tools">
 											<a href="#add" data-toggle="modal" class="btn btn-info btn-border btn-round btn-sm">
 												<i class="fa fa-plus"></i>
@@ -70,32 +70,42 @@
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <?php if(!empty($position)): ?>
-                                                    <?php $no=1; foreach($position as $row): ?>
-                                                    <tr>
-                                                        <td><?= $no ?></td>
-                                                        <td><?= $row['position'] ?></td>
-                                                        <td><?= $row['order'] ?></td>
-                                                        <td>
-                                                            <div class="form-button-action">
-                                                                <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
-                                                                    title="Edit Position" onclick="editPos(this)" data-pos="<?= $row['position'] ?>" data-order="<?= $row['order'] ?>" data-id="<?= $row['id'] ?>">
-                                                                    <i class="fa fa-edit"></i>
-                                                                </a>
-                                                                <a type="button" data-toggle="tooltip" href="model/remove_position.php?id=<?= $row['id'] ?>" onclick="return confirm('Are you sure you want to delete this position?');" class="btn btn-link btn-danger" data-original-title="Remove">
-                                                                    <i class="fa fa-times"></i>
-                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <?php $no++; endforeach ?>
-                                                <?php else: ?>
-                                                    <tr>
-                                                        <td colspan="4" class="text-center">No Available Data</td>
-                                                    </tr>
-                                                <?php endif ?>
-                                            </tbody>
+ 
+<tbody>
+    <?php if (!empty($position)) : ?>
+        <?php $no = 1; ?>
+        <?php foreach ($position as $row) : ?>
+            <tr>
+                <td><?= $no; ?></td>
+                <td><?= htmlspecialchars($row['position']); ?></td>
+                <td><?= htmlspecialchars($row['order']); ?></td>
+                <td>
+                    <div class="form-button-action">
+                        <a type="button" href="#edit" data-toggle="modal" class="btn btn-link btn-primary" 
+                            title="Edit Position" onclick="editPos(this)" 
+                            data-pos="<?= htmlspecialchars($row['position']); ?>" 
+                            data-order="<?= htmlspecialchars($row['order']); ?>" 
+                            data-id="<?= htmlspecialchars($row['id']); ?>">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a type="button" data-toggle="tooltip" href="./model/remove_position.php?id=<?= htmlspecialchars($row['id']); ?>" 
+                           onclick="return confirm('Are you sure you want to delete this position?');" 
+                           class="btn btn-link btn-danger" data-original-title="Remove">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <?php $no++; ?>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <tr>
+            <td colspan="4" class="text-center">No Available Data</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
+
+
                                             <tfoot>
                                                 <tr>
                                                     <th scope="col">No.</th>
@@ -179,12 +189,12 @@
             </div>
 
 			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
+			<?php include '../templates/main-footer.php' ?>
 			<!-- End Main Footer -->
 			
 		</div>
 		
 	</div>
-	<?php include 'templates/footer.php' ?>
+	<?php include '../templates/footer.php' ?>
 </body>
 </html>

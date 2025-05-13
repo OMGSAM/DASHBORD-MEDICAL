@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <?php include 'templates/header.php' ?>
-	<title>Login -  Barangay Management System</title>
+	<title>Login -   Management System</title>
 
 <body class="login">
 <?php include 'templates/loading_screen.php' ?>

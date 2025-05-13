@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Business Permit -  Barangay Management System</title>
+	<title>Business Permit -  Management System</title>
     <style>
         @page  
         { 

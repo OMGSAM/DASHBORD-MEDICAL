@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Resident Certificate Issuance -  Barangay Management System</title>
+	<title>Resident Certificate Issuance -  Management System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

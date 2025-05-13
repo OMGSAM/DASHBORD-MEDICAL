@@ -17,7 +17,17 @@
 	    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+
+<style>
+
+body {
+  font-family: 'Abril Fatface', serif;
+}
+
+</style>
 <body>
+ 
+
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -27,6 +37,38 @@
 				<div class="page-inner">
 					<div class="row">
 						<div class="col-md-12">
+
+						
+
+<?php if(isset($_SESSION['message'])): ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: '<?= $_SESSION['success'] == 'danger' ? 'error' : 'success'; ?>',
+                title: '<?= $_SESSION['message']; ?>',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    const header = toast.querySelector('.swal2-title');
+                    // header.style.backgroundColor = '#000';
+                    // header.style.color = '#fff';
+                    setTimeout(() => {
+                        header.style.backgroundColor = '';
+                        header.style.color = '';
+                    }, 1000); // Après 1 seconde, revenir à la couleur par défaut
+                }
+            });
+        });
+    </script>
+<?php unset($_SESSION['message']); ?>
+<?php endif; ?>
+
+
+
 							<!-- action alert -->
 							<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">
@@ -166,15 +208,26 @@
 		function Export(){
 			// should have policy like 2 weeks retention of records and scope for export to csv
 			var conf = confirm("Export facture to CSV?");
-			var stmt = "SELECT * FROM facture";
-			var tblHeader = 'id,patient,doctor,montant,date_facture, motif';
-			var fileName = "facture";
+			var stmt = "SELECT * FROM patient";
+			var tblHeader = 'id,nom,email,telephone,adresse, sexe';
+			var fileName = "patient";
 			if(conf){
 				window.open(`export.php?query=${stmt}&tblHeader=${tblHeader}&fileName=${fileName}`, '_blank');
 			}
 		}
     </script>
 	<style>
+		 
+    .swal2-styled-toast {
+        background-color: #333;
+        color: #fff;
+        font-size: 16px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+ 
+
 		.text-primary, .text-primary a{
 			color: #1c9790 !important;
 		}

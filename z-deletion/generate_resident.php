@@ -9,7 +9,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Generate Resident Profile -  Barangay Management System</title>
+	<title>Generate Resident Profile -   Management System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

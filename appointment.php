@@ -28,6 +28,12 @@
 	<?php include 'templates/header.php' ?>
 	<title>Appointment -  Health Service System</title>
 </head>
+<style>
+	body {
+  font-family: 'Roboto Flex', sans-serif;
+}
+
+</style>
 <body>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>

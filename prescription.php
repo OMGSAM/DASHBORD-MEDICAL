@@ -15,6 +15,12 @@
 	<?php include 'templates/header.php' ?>
 	<title>Les Prescriptions -  Health Service System</title>
 </head>
+<style>
+	body {
+  font-family: 'DM Serif Display', serif;
+}
+
+</style>
 <body>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>

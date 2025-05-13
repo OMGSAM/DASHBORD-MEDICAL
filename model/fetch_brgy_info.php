@@ -1,4 +1,4 @@
-<?php include 'server/server.php' ?>
+<?php include './server/server.php' ?>
 <?php 
     $query = "SELECT * FROM tblbrgy_info";
     $result = $conn->query($query);

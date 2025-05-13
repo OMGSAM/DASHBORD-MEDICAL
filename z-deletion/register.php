@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php include 'templates/header.php' ?>
-	<title>Register -  Barangay Management System</title>
+	<title>Register -    Management System</title>
 
 <body class="login">
 <?php include 'templates/loading_screen.php' ?>

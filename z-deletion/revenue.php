@@ -1,30 +1,38 @@
-<?php include 'server/server.php' ?>
-<?php 
-	$sql = "SELECT * FROM tblpayments ORDER BY `date` DESC";
-    $result = $conn->query($sql);
+<?php include '../server/server.php' ?>
+ <?php 
+    $query = "SELECT * FROM tblpayments ";
+    $result = $conn->query($query);
+	$row = $result->fetch_assoc();
+
+	 
+ 
 
     $revenue = array();
 	while($row = $result->fetch_assoc()){
 		$revenue[] = $row; 
 	}
+
+ 
+ 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<?php include 'templates/header.php' ?>
+	 <?php include '../templates/header.php' ?>
 	<link rel="stylesheet" href="assets/js/plugin/dataTables.dateTime.min.css">
 	<link rel="stylesheet" href="assets/js/plugin/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
-	<title>Barangay Revenues -  Barangay Management System</title>
+	<title>  Revenues -   Management System</title>
 </head>
 <body>
-<?php include 'templates/loading_screen.php' ?>
+<?php include '../templates/loading_screen.php' ?>
 	<div class="wrapper">
 		<!-- Main Header -->
-		<?php include 'templates/main-header.php' ?>
+		<?php include '../templates/main-header.php' ?>
 		<!-- End Main Header -->
 
 		<!-- Sidebar -->
-		<?php include 'templates/sidebar.php' ?>
+		<?php include '../templates/sidebar.php' ?>
 		<!-- End Sidebar -->
 
 		<div class="main-panel">
@@ -33,7 +41,7 @@
 					<div class="page-inner">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white fw-bold">Barangay Revenues</h2>
+								<h2 class="text-white fw-bold">  Revenues</h2>
 							</div>
 						</div>
 					</div>
@@ -90,15 +98,7 @@
 													<?php $no++; endforeach ?>
 												<?php endif ?>
 											</tbody>
-											<tfoot>
-												<tr>
-                                                    <th scope="col">Date</th>
-													<th scope="col">Recipient</th>
-													<th scope="col">Details</th>
-													<th scope="col">Amount</th>
-													<th scope="col">Username</th>
-												</tr>
-											</tfoot>
+											 
 										</table>
 									</div>
 								</div>
@@ -109,13 +109,13 @@
 			</div>
 
 			<!-- Main Footer -->
-			<?php include 'templates/main-footer.php' ?>
+			<?php include '../templates/main-footer.php' ?>
 			<!-- End Main Footer -->
 			
 		</div>
 		
 	</div>
-	<?php include 'templates/footer.php' ?>
+	<?php include '../templates/footer.php' ?>
     <script src="assets/js/plugin/datatables/datatables.min.js"></script>
 	<script src="assets/js/plugin/moment/moment.min.js"></script>
 	<script src="assets/js/plugin/dataTables.dateTime.min.js"></script>

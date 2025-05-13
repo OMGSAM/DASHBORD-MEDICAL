@@ -22,7 +22,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Certificate of Indigency -  Barangay Management System</title>
+	<title>Certificate of Indigency -   Management System</title>
     <style>
         @page  
         { 

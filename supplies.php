@@ -16,13 +16,14 @@
 	<title>Medical Supplies - Health Service System</title>
 </head>
 <style>
+	body{ font-family: 'Playfair Display', serif; }
 	#sss{
 		 
 		 font-size: 32px;
 		 font-weight: 600;
 		 margin-bottom: 10px;
 		 color:  #1c9790;
-	  font-family: 'Poppins', sans-serif;
+	  /* font-family: 'Poppins', sans-serif; */
 	}
 </style>
 <body>
@@ -35,6 +36,37 @@
 				<div class="page-inner">
 					<div class="row mt--2">
 						<div class="col-md-12">
+
+
+<?php if(isset($_SESSION['message'])): ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: '<?= $_SESSION['success'] == 'danger' ? 'error' : 'success'; ?>',
+                title: '<?= $_SESSION['message']; ?>',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    const header = toast.querySelector('.swal2-title');
+                    // header.style.backgroundColor = '#000';
+                    // header.style.color = '#fff';
+                    setTimeout(() => {
+                        header.style.backgroundColor = '';
+                        header.style.color = '';
+                    }, 1000); // Après 1 seconde, revenir à la couleur par défaut
+                }
+            });
+        });
+    </script>
+<?php unset($_SESSION['message']); ?>
+<?php endif; ?>
+
+
+
 							<!-- action alert -->
 							<?php if(isset($_SESSION['message'])): ?>
 								<div class="alert alert-<?= $_SESSION['success']; ?> <?= $_SESSION['success']=='danger' ? 'bg-danger text-light' : null ?>" role="alert">

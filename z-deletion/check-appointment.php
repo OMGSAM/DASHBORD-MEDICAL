@@ -25,7 +25,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Appointments -  Barangay Healthcare System</title>
+	<title>Appointments -   Healthcare System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

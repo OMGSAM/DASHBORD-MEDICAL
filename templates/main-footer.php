@@ -11,19 +11,35 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Update Barangay Info</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update   Info</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+
+                 <?php 
+
+    $query1 = "SELECT * FROM tblbrgy_info ";
+    $result1 = $conn->query($query1);
+	$row1 = $result1->fetch_assoc();
+
+    $row2 = array();
+	while($row1 = $result1->fetch_assoc()){
+		$row2[] = $row1; 
+	}
+
+ 
+ 
+?>
+
                 <form method="POST" action="model/edit_brgy_info.php" enctype="multipart/form-data">
                 <input type="hidden" name="size" value="1000000">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Province Name</label>
-                                <input type="text" class="form-control" placeholder="Enter Province Name" name="province" required value="<?= $province ?>">
+                                <input type="text" class="form-control" placeholder="Enter Province Name" name="province" required value="<?= $row2['province']; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -36,7 +52,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Barangay Name</label>
+                                <label>  Name</label>
                                 <input type="text" class="form-control" placeholder="Enter Name" name="brgy" required value="<?= $brgy ?>">
                             </div>
                         </div>
@@ -61,7 +77,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Barangay Logo</label><br>
+                                <label>  Logo</label><br>
                                 <img src="assets/uploads/<?= $brgy_logo ?>" class="img-fluid" width="120">
                                 <input type="file" class='form-control' name="brgy_logo" accept="image/*">
                             </div>

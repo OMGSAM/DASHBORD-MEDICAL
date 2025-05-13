@@ -22,7 +22,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Appointment Report -  Barangay Management Systemm</title>
+	<title>Appointment Report -   Management Systemm</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

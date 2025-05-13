@@ -1,9 +1,6 @@
 <?php include 'server/server.php' ?>
 <?php 
-	// announcement
-// hi
-//ok
-//edit
+ 
 	$getAnnouncement = "SELECT * FROM tbl_announcement WHERE status=1 ORDER BY id DESC";
     $announcement = $conn->query($getAnnouncement);
 	
@@ -42,15 +39,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
 	<?php include 'templates/header.php' ?>
-	<title>Dashboard - KATIM Health Service System</title>
+	<title>Dashboard - KATIM Health Care</title>
 </head>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+ 
 :root {
     --light: #f6f6f9;
     --primary: #1976D2;
@@ -64,6 +61,11 @@
     --light-warning: #FFF2C6;
     --success: #388E3C;
     --light-success: #BBF7D0;
+}
+ *{
+ font-family: 'Poppins', sans-serif;
+   /* font-family: 'Playfair Display', serif; */
+
 }
 
 .content main{
@@ -86,8 +88,10 @@
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--dark);
- font-family: 'Poppins', sans-serif;
+    
+ 
 }
+ 
 
 .content main .header .left .breadcrumb{
     display: flex;
@@ -400,12 +404,33 @@ margin: 5px; /* Espacement entre les éléments */
     }
 
 }
-
  
 
  
 </style>
 <body>
+<?php if(isset($_SESSION['message'])): ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire({
+                toast: true,
+                position: 'bottom-end',
+                icon: '<?= $_SESSION['success'] == 'danger' ? 'error' : 'success'; ?>',
+                title: '<?= $_SESSION['message']; ?>',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'my-swal-toast',
+                },
+            });
+        });
+    </script>
+<?php unset($_SESSION['message']); ?>
+<?php endif; ?>
+
+
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
 		<?php include 'templates/sidebar.php' ?>
@@ -413,6 +438,7 @@ margin: 5px; /* Espacement entre les éléments */
 		<div class="main-panel">
 			<div class="content">
 				<div class="page-inner mt--2">
+                    
 					
 					<!-- login alert -->
 					<?php if(isset($_SESSION['message'])): ?>
@@ -435,15 +461,23 @@ margin: 5px; /* Espacement entre les éléments */
                        
                     </ul>
                 </div>
-                <a href="model/logout.php" class="report">
+                <!-- <a href="model/logout.php" class="report">
                     <i class='bx bx-cloud-download'></i>
                     <span>LOG OUT</span>
-                </a>
+                </a> -->
             </div>
 
 
             <!-- Insights -->
              <?php 
+                 $query2 = "SELECT count(*) as ok FROM tbl_medical_supply";
+$bac = $conn->query($query2);
+$somme1 = $bac->fetch_assoc();
+    
+             $query1 = "SELECT count(*) as ot FROM patient";
+$ba = $conn->query($query1);
+$somme = $ba->fetch_assoc();
+
              
 $x = "SELECT SUM(montant) AS tot FROM facture";
 $b = $conn->query($x);
@@ -460,28 +494,37 @@ $a = $b->fetch_assoc();
 
 ?>
             <ul class="insights">
-                <li>
+                 
+
+                <li >
                    <i class="fa-solid fa-bed" id="w"></i>
                     <span class="info">
                         <h3>
-                         333
+                         
+                         <?=$somme['ot'];?>
                             
                         </h3>
                         <p>Patients </p>
                     </span>
-                </li>
+                
+
+                </a>
+                 
+
+
+
                 <li><i class='bx bx-show-alt'></i>
                     <span class="info">
                         <h3>
                             3,944
                         </h3>
-                        <p>Site Visit</p>
+                        <p>Site Visites</p>
                     </span>
                 </li>
                 <li><i class="fa-solid fa-stethoscope" id="q"></i>
                     <span class="info">
                         <h3>
-                           341
+                           <?=$somme1['ok']; ?>
                         </h3>
                         <p>Fournitures Médicals</p>
                     </span>

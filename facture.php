@@ -17,6 +17,12 @@
 	    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
+<style>
+	body {
+  font-family: 'Oswald', sans-serif;
+}
+
+</style>
 <body>
 	<div class="wrapper">
 		<?php include 'templates/main-header.php' ?>
@@ -60,7 +66,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table id="appointment" class="display table">
+										<table  id="appointment"  class="display table">
 											<thead>
 												<tr class="text-primary">
 													<th scope="col">Patient</th>
@@ -110,14 +116,14 @@
     </a>
 
     <!-- Generate PDF -->
-    <a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF" style="text-decoration: none; color: white;">
+    <a href="facturepdf.php?id_facture=<?= $row['id']; ?>" title="Générer la facture PDF" style="text-decoration: none; color: yellowgreen;">
         <i class="fa-solid fa-file-pdf" style="font-size: 30px; margin-right: 5px;"></i>    
     </a>
 
     <!-- Inform Patient -->
 	  
 
-    <a  href="test.php?id=<?= $row['id']; ?>"   style="text-decoration: none; color: gold;">
+    <a  href="test.php?id=<?= $row['id']; ?>"   style="text-decoration: none; color: yellowgreen;">
         <i class="fab fa-telegram-plane" style="font-size: 30px; margin-right: 5px;"></i>    
     </a>
 

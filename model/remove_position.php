@@ -1,7 +1,8 @@
 <?php 
 	include '../server/server.php';
 
-	if(!isset($_SESSION['username']) && $_SESSION['role']!='administrator'){
+	if(!isset($_SESSION['username'])  && $_SESSION['role']!='administrator')
+	{
 		if (isset($_SERVER["HTTP_REFERER"])) {
 			header("Location: " . $_SERVER["HTTP_REFERER"]);
 		}

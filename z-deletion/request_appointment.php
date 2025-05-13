@@ -13,7 +13,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Support Management -  Barangay Healthcare System</title>
+	<title>Support Management -    Healthcare System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

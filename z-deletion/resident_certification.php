@@ -20,7 +20,7 @@
 <html lang="en">
 <head>
 	<?php include 'templates/header.php' ?>
-	<title>Barangay Certificate -  Barangay Management System</title>
+	<title>  Certificate -    Management System</title>
 </head>
 <body>
 <?php include 'templates/loading_screen.php' ?>

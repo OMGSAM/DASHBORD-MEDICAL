@@ -16,7 +16,7 @@
 	<title>Medical Supplies - Health Service System</title>
 </head>
 <style>
-	body{ font-family: 'Playfair Display', serif; }
+	 
 	#sss{
 		 
 		 font-size: 32px;

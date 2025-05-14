@@ -1,35 +1,7 @@
 <?php include 'server/server.php' ?>
 <?php 
  
-	$getAnnouncement = "SELECT * FROM tbl_announcement WHERE status=1 ORDER BY id DESC";
-    $announcement = $conn->query($getAnnouncement);
-	
-	// total residents
-	$stmtResidentTotal 	= "SELECT COUNT(*) AS count FROM tblresident";
-    $resResidentTotal 	= $conn->query($stmtResidentTotal);
-	$totalResident = $resResidentTotal->fetch_assoc();
 
-	// total female
-	$stmtFemaleResidentTotal 	= "SELECT COUNT(*) AS count FROM tblresident WHERE gender='Female'";
-    $resFemaleResidentTotal 	= $conn->query($stmtFemaleResidentTotal);
-	$totalFemaleResident = $resFemaleResidentTotal->fetch_assoc();
-
-	// total male
-	$stmtMaleResidentTotal 	= "SELECT COUNT(*) AS count FROM tblresident WHERE gender='Male'";
-    $resMaleResidentTotal 	= $conn->query($stmtMaleResidentTotal);
-	$totalMaleResident = $resMaleResidentTotal->fetch_assoc();
-
-	// total medicine available
-	$stmtMedinceAvailableTotal 	= "SELECT SUM(quantity) AS med_count FROM tbl_medicine";
-    $resMedicineAvailableTotal 	= $conn->query($stmtMedinceAvailableTotal);
-	$totalMedicineAvailable = $resMedicineAvailableTotal->fetch_assoc();
-
-	// total medical supply available
-	$stmtMedicalSupplyAvailable 	= "SELECT SUM(quantity) AS supply_count FROM tbl_medical_supply";
-    $resMedicalSupplyAvailable 	= $conn->query($stmtMedicalSupplyAvailable);
-	$totalMedicalSupplyAvailable = $resMedicalSupplyAvailable->fetch_assoc();
-
-	// total appointments today
 	$date_today 			= date("Y-m-d");
 	$stmtAppointmentsToday 	= "SELECT COUNT(*) AS total_appointment FROM tbl_appointment WHERE appointment_date = '$date_today'";
     $resAppointmentsToday 	= $conn->query($stmtAppointmentsToday);
@@ -43,11 +15,15 @@
 	<?php include 'templates/header.php' ?>
 	<title>Dashboard - KATIM Health Care</title>
 </head>
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>  -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <style>
  
+
 :root {
     --light: #f6f6f9;
     --primary: #1976D2;
@@ -62,11 +38,7 @@
     --success: #388E3C;
     --light-success: #BBF7D0;
 }
- *{
- font-family: 'Poppins', sans-serif;
-   /* font-family: 'Playfair Display', serif; */
-
-}
+ 
 
 .content main{
     width: 100%;
@@ -461,10 +433,7 @@ margin: 5px; /* Espacement entre les éléments */
                        
                     </ul>
                 </div>
-                <!-- <a href="model/logout.php" class="report">
-                    <i class='bx bx-cloud-download'></i>
-                    <span>LOG OUT</span>
-                </a> -->
+                 
             </div>
 
 

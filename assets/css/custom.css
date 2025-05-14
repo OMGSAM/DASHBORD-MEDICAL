@@ -1,4 +1,7 @@
  
+ * {
+  text-decoration: none !important;
+}
 
 @media (min-width: 768px) {
     .modal-xl {

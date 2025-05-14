@@ -91,12 +91,14 @@ body, h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, 
    /* font-family: 'Montserrat', sans-serif; */
 
  }
-
+ * {
+  text-decoration: none !important;
+}
  
 body {
   font-size: 14px;
   color: #575962; 
-/* font-family: 'Montserrat', sans-serif;  */
+/* font-family: 'Montserrat', sans-serif;   */
 }
 
 a {
@@ -106,6 +108,7 @@ a {
 
 h1,
 .h1 {
+   color: #1c9790;
   font-size: 1.725rem; }
 
 h2,

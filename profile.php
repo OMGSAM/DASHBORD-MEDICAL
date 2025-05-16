@@ -10,13 +10,13 @@ if (!isset($_SESSION['id'])) {
 
 $user_id = $_SESSION['id'];
  
-$stmt = $conn->prepare("SELECT username, user_type ,created_at, password, id FROM tbl_users WHERE id = ?");
+$stmt = $conn->prepare("SELECT  * FROM tbl_users WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
-$row= $result->fetch_assoc();
+$user= $result->fetch_assoc();
 
-if (!$row) {
+if (!$user) {
     echo "Utilisateur non trouvé.";
     exit();
 }
@@ -53,13 +53,10 @@ if (!$row) {
 									</div>
 								</div>
 								<div class="card-body">
-									                                                        <strong class="text-primary">passsword : <?php echo $row['password'] ?></strong>
-
-                                                         <strong class="text-primary">id : <?php echo $row['id'] ?></strong>
-                                                     <br>
-                                                        <strong class="text-primary">passsword : <?php echo $row['password'] ?></strong>
-                                                     <br>
-                                                            <strong class="text-primary">created_at : <?php echo $row['created_at'] ?></strong>
+									<h1>Profil de <?php echo htmlspecialchars($user['username']); ?></h1>
+    <p>Email : <?php echo htmlspecialchars($user['display_name']); ?></p>
+    <p>Inscrit le : <?php echo htmlspecialchars($user['created_at']); ?></p>
+                                                   
                                                      
                                  
 								</div>

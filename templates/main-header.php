@@ -31,7 +31,7 @@
         <!-- Search Input -->
          <form method="post" action="searsh.php">
      <div class="search-bar" style="display: flex; align-items: center; border: 1px solid #ddd; padding: 8px 12px; border-radius: 8px; width: 300px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); background-color: #fafafa;">
-    <input type="text" class="form-control" placeholder="Rechercher..." style="flex: 1; border: none; outline: none; background-color: transparent; padding-right: 8px; font-size: 14px;">
+    <input type="text" name="search" class="form-control" placeholder="Rechercher..." style="flex: 1; border: none; outline: none; background-color: transparent; padding-right: 8px; font-size: 14px;">
     <i class='bx bx-search-alt' style="font-size: 20px; color: #666;"></i>
 </form>
 </div>

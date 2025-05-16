@@ -1,8 +1,17 @@
+ <?php 
+if($_SESSION['role']!=='system-maintenance'){	 
+header('Location: dashboard.php');
+exit();  
+}
+ ?> 
+
 <?php include 'server/server.php'  ?>
 <?php
 $patient = isset($_GET['id']) ? intval($_GET['id']) : 0;
- 
 ?>
+
+ 
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

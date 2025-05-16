@@ -44,7 +44,7 @@
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title text-primary">
-											<h1>PRESCRIPTIONS RECORD</h1>
+											<h1 class="text-primary">PRESCRIPTIONS RECORD</h1>
 										</div>
 										
 										<div class="card-tools">

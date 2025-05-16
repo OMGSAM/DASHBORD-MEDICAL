@@ -8,13 +8,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="assets/img/kk.png" type="image/x-icon"/>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Clinic System - Login</title>
     <link href="https://appli.hsabati.com/assets/css/reset.css" rel="stylesheet">
-    <link href="https://appli.hsabati.com/assets/images/favicon.png" rel="shortcut icon">
-    <link rel="stylesheet" type="text/css"
+     <link rel="stylesheet" type="text/css"
           href="https://appli.hsabati.com/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css"
           href="https://appli.hsabati.com/bower_components/font-awesome/css/font-awesome.min.css">
@@ -90,7 +91,7 @@
     <div class="left-side">
         <div class="logo-square text-center">
             <img src="assets/img/kk.png" alt="Hsabati SARL Logo">
-            <label class="bigtext">Connexion</label>
+            <label class="bigtext">Katim Health Care</label>
 
             <div class="login-container">
               
@@ -125,7 +126,7 @@
             </div>
             <div class="logo-label text-center">
                 
-                <h5>LE PARTENAIRE DES DÉCIDEURS</h5>
+                <h5>Le Partenaire Des Cliniques</h5>
             </div>
         </div>
     </div>

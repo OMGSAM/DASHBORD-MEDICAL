@@ -57,7 +57,7 @@
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title text-primary">
-											<h1>APPOINTMENT RECORD</h1>
+											<h1 class="text-primary">APPOINTMENT RECORD</h1>
 										</div>
 										
 										<div class="card-tools">

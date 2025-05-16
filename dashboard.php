@@ -606,7 +606,7 @@ $a = $b->fetch_assoc();
         </main>
 
 					<!-- announcement -->
-					<?php if(isset($_SESSION['username']) && ($_SESSION['role'] =='resident' || $_SESSION['role'] =='medical-admin')):?>
+					<?php if(isset($_SESSION['username']) && ($_SESSION['role'] =='resident1' || $_SESSION['role'] =='medical-admin1')):?>
 						<div class="row">
 						<?php include 'templates/loading_screen.php' ?>
                         <div class="col-md-12 mt-0">

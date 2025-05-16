@@ -2,7 +2,7 @@
 <?php 
 	$query = "SELECT o.name     AS 'official',
 					c.title     AS 'chairmanship',
-					p.position  AS 'position',
+					o.position  AS 'position',
 					o.termstart AS 'term_start',
 					o.status 	AS 'status',
 					p.order 	AS 'rank_order'
@@ -10,7 +10,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 				   		    ON o.chairmanship = c.id
 		  			 LEFT JOIN tbl_position p
 			  			    ON o.position = p.id";
-    $result = $conn->query($query);
+     $result = $conn->query($query);
 
     $officials = array();
 	while($row = $result->fetch_assoc()){
@@ -47,7 +47,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title text-primary">
-											<h1>Nos Infirmiers</h1>
+											<h1 class="text-primary">Nos Infirmiers</h1>
 										</div>
 										<?php if(isset($_SESSION['username']) && $_SESSION['role']!='resident'): ?>
 										<div class="card-tools">
@@ -67,12 +67,14 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 												<tr class="text-primary">
 														<th scope="col">Nurse</th>
 														<th scope="col">Spécialité</th>
-														<th scope="col">Position</th>
+														<th scope="col">Phone</th>
 														<th scope="col">Term Start</th>
 														<th scope="col">Status</th>
 												</tr>
 											</thead>
 											<tbody>
+
+ 
 												<?php foreach($officials as $row): ?>
 													<tr>
 														<td>
@@ -82,7 +84,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 															<?= ucwords($row['official']) ?>
 														</td>
 														<td><?= ucwords($row['chairmanship']) ?></td>
-														<td><?= ucwords($row['position']) ?></td>
+														<td><?=$row['position'];?></td>
 														<td><?= ucwords($row['term_start']) ?></td>
 														<td>
 															<?php if($row['status']=='Active'): ?>

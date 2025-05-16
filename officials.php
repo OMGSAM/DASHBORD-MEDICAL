@@ -49,7 +49,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title text-primary">
-											<h1>Nos Médecins</h1>
+											<h1 class="text-primary">Nos Médecins</h1>
 										</div>
 										<?php if(isset($_SESSION['username']) && $_SESSION['role']!='resident'): ?>
 										<div class="card-tools">
@@ -101,7 +101,7 @@ FROM tbl_officials o LEFT JOIN tbl_chairmanship c
 															<?= ucwords($row['official']) ?>
 														</td>
 														<td><?= ucwords($row['chairmanship']) ?></td>
-														<td><?= $row['position'] ?></td>
+														<td><?=$row['position']; ?></td>
 														<td><?= ucwords($row['term_start']) ?></td>
 														<td>
 															<?php if($row['status']=='Active'): ?>

@@ -32,8 +32,23 @@
                                                  
                                                 <div class="form-group">
                                                     <label for="inputResidentName">Patient Name</label>
-                                                    <input type="text" class="form-control" id="inputResidentName" name="patient" required>
+                                                    <!-- <input type="text" class="form-control" id="inputResidentName" name="patient" required> -->
                                                     <!-- <small class="form-text text-muted">ex: DELA CRUZ, JUAN V.</small> -->
+													 <?php
+												$query="SELECT * from patient" ;
+												$res=$conn->query($query);
+												$row1=[];
+												while($row=$res->fetch_assoc()){
+													$row1[]=$row;
+												}
+												?>
+											 		<select class="form-control" name="patient"  required>
+														 <?php foreach ($row1 as $row): ?> 
+												      <option value="<?= $row['nom'];?>">
+           									 <?=  $row['nom']; ?>
+														 </option>
+    									<?php endforeach; ?>
+												</select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="inputResidentName">Doctor Name</label>

@@ -1,9 +1,4 @@
- <?php 
-if($_SESSION['role']!=='system-maintenance'){	 
-header('Location: dashboard.php');
-exit();  
-}
- ?> 
+ 
 
 <?php include 'server/server.php'  ?>
 <?php

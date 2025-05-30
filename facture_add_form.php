@@ -37,9 +37,32 @@
                                                         <option>VACCINATION</option>
                                                     </select>
                                                 </div> -->
+
+											 
+
+												<div>
+													 
+
+												</div>
+
                                                 <div class="form-group">
                                                     <label for="inputResidentName">Patient Name</label>
-                                                    <input type="text" class="form-control" id="inputResidentName" name="patient" required>
+ 
+												<?php
+												$query="SELECT * from patient" ;
+												$res=$conn->query($query);
+												$row1=[];
+												while($row=$res->fetch_assoc()){
+													$row1[]=$row;
+												}
+												?>
+											 		<select class="form-control" name="patient"  required>
+														 <?php foreach ($row1 as $row): ?> 
+												      <option value="<?= $row['nom'];?>">
+           									 <?=  $row['nom']; ?>
+														 </option>
+    									<?php endforeach; ?>
+												</select>
                                                     <!-- <small class="form-text text-muted">ex: DELA CRUZ, JUAN V.</small> -->
                                                 </div>
                                                 <div class="form-group">

@@ -127,6 +127,10 @@
         <i class="fab fa-telegram-plane" style="font-size: 30px; margin-right: 5px;"></i>    
     </a>
 
+	<a href="deletefacture.php?id=<?= $row['id']; ?>" title="Supprimer la facture" style="text-decoration: none; color: yellowgreen;">
+    <i class="fa-solid fa-trash" style="font-size: 30px;"></i>
+</a>
+
 </div>
 
 

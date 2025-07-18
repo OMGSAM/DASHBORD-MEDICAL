@@ -112,7 +112,7 @@
 														<th scope="col">Description</th>
 														<th scope="col">Category</th>
 														<th scope="col">Quantity</th>
-														<th scope="col">Dosage</th>
+														<th scope="col">Prix</th>
 														<th scope="col">Unit</th>
 														<th scope="col">Status</th>
 														<?php if(isset($_SESSION['username']) && $_SESSION['role']!='resident'): ?>
@@ -127,7 +127,7 @@
 															<td><?= ucwords($row['description']) ?></td>
 															<td><?= ucwords($row['category']) ?></td>
 															<td><?= ucwords($row['quantity']) ?></td>
-															<td><?= ucwords($row['dosage']) ?></td>
+															<td><?= ucwords($row['prix'])?>DH</td>
 															<td><?= ucwords($row['unit']) ?></td>
 															<td class="text-center">
 																<span style="width:90px;" class="badge rounded-pill <?= $row['quantity']>0?'bg-success':'bg-danger' ?> text-white"><?= ucwords($row['quantity']>0?"Available":"Out of Stock") ?></span></td>

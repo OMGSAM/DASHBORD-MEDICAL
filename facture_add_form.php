@@ -26,65 +26,105 @@
 									</div>
 								</div>
 								<div class="card-body">
-                                    <form method="POST" action="facture_add_record.php">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <!-- <div class="form-group">
-                                                    <label for="inputAppointmentType">Appointment Type</label>
-                                                    <select class="form-control" id="inputAppointmentType" name="appointment_type" required>
-														<option selected="true" disabled="disabled">--</option>
-														<option>CHECK-UP</option>
-                                                        <option>VACCINATION</option>
-                                                    </select>
-                                                </div> -->
+                                   <form method="POST" action="go.php">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- ==================== Patient ==================== -->
+            <div class="form-group">
+                <label for="inputPatient">Nom du patient</label>
+                <?php
+                $query = "SELECT * FROM patient";
+                $res = $conn->query($query);
+                $patients = [];
+                while ($row = $res->fetch_assoc()) {
+                    $patients[] = $row;
+                }
+                ?>
+                <select class="form-control" name="patient" id="inputPatient" required>
+                    <option value="" disabled selected>-- Sélectionner un patient --</option>
+                    <?php foreach ($patients as $p): ?>
+                        <option value="<?= $p['nom']; ?>"><?= $p['nom']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-											 
+            <!-- ==================== Médecin ==================== -->
+            <div class="form-group">
+                <label for="inputDoctor">Médecin</label>
+                <?php
+                $query = "SELECT * FROM tbl_officials";
+                $res = $conn->query($query);
+                $doctors = [];
+                while ($row = $res->fetch_assoc()) {
+                    $doctors[] = $row;
+                }
+                ?>
+                <select class="form-control" name="doctor" id="inputDoctor" required>
+                    <option value="" disabled selected>-- Sélectionner un médecin --</option>
+                    <?php foreach ($doctors as $d): ?>
+                        <option value="<?= $d['name']; ?>"><?= $d['name']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-												<div>
-													 
+            <!-- ==================== MEDICINE ==================== -->
+ <!-- Médicaments (Ajout Dynamique) -->
+<div class="form-group">
+    <label>Médicaments</label>
+    <div id="med-list">
+        <div class="form-row align-items-center mb-2 med-item">
+            <div class="col-md-8">
+                <select class="form-control" name="medicaments[]">
+                    <option value="" disabled selected>-- Sélectionner un médicament --</option>
+                    <?php
+                    $query = "SELECT * FROM tbl_medicine WHERE quantity > 0";
+                    $res = $conn->query($query);
+                    $medicaments = [];
+                    while ($row = $res->fetch_assoc()) {
+                        $medicaments[] = $row;
+                    }
+                    foreach ($medicaments as $med): ?>
+                        <option value="<?= $med['id']; ?>"><?= $med['generic_name']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" name="quantites[]" placeholder="Quantité" min="1" max="<?=$med['quantity'] ?>">
+            </div>
+        </div>
+    </div>
 
-												</div>
+    <button type="button" class="btn btn-secondary mt-2" onclick="addMedicament()">+ Ajouter Médicament</button>
+</div>
 
-                                                <div class="form-group">
-                                                    <label for="inputResidentName">Patient Name</label>
- 
-												<?php
-												$query="SELECT * from patient" ;
-												$res=$conn->query($query);
-												$row1=[];
-												while($row=$res->fetch_assoc()){
-													$row1[]=$row;
-												}
-												?>
-											 		<select class="form-control" name="patient"  required>
-														 <?php foreach ($row1 as $row): ?> 
-												      <option value="<?= $row['nom'];?>">
-           									 <?=  $row['nom']; ?>
-														 </option>
-    									<?php endforeach; ?>
-												</select>
-                                                    <!-- <small class="form-text text-muted">ex: DELA CRUZ, JUAN V.</small> -->
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="inputAge">Montant</label>
-                                                    <input type="number" class="form-control" id="inputAge" name="montant" required>
-                                                </div>
-												<div class="form-group">
-                                                    <label for="inputMobile">Doctor</label>
-                                                    <input type="text" class="form-control" id="inputMobile" name="doctor" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="concern">Motif</label>
-                                                    <textarea class="form-control" id="concern" rows="4" name="motif" required></textarea>
-                                                    <small class="form-text text-muted">Operation  , médicament ect ...</small>
-                                                </div>
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary mt-2 mb-2 mr-1">Create</button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6"></div>
-                                        </div>
-                                    </form>
+
+
+			 <!-- ==================== Montant ==================== -->
+            <div class="form-group">
+                <label for="inputMontant">Frais Operation || Traitement</label>
+                <input type="number" class="form-control" id="inputMontant" name="montant" required min="0" step="0.01">
+            </div>
+
+            <!-- ==================== Motif ==================== -->
+            <div class="form-group">
+                <label for="inputMotif">Motif</label>
+                <textarea class="form-control" id="inputMotif" name="motif" rows="4" required></textarea>
+                <small class="form-text text-muted">Ex : opération, médicaments, consultation...</small>
+            </div>
+
+            <!-- ==================== Submit ==================== -->
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary mt-2 mb-2">Créer la facture</button>
+            </div>
+        </div>
+
+        <!-- ==================== Colonne droite (vide ou future extension) ==================== -->
+        <div class="col-md-6">
+            <!-- Ici vous pouvez ajouter : liste de médicaments dynamiques -->
+        </div>
+    </div>
+</form>
+
 								</div>
 								<!-- end of medicine table -->
 							</div>
@@ -102,6 +142,33 @@
 	
 	<?php include 'templates/footer.php' ?>
 	<script src="assets/js/plugin/datatables/datatables.min.js"></script>
+	<script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const qtyInputs = document.querySelectorAll('input[name="quantites[]"]');
+
+    qtyInputs.forEach(function (input) {
+        input.addEventListener('input', function () {
+            const max = parseInt(input.getAttribute('max'));
+            const value = parseInt(input.value);
+
+            if (value > max) {
+                input.value = max;
+                alert('La quantité ne peut pas dépasser le stock disponible (' + max + ').');
+            }
+        });
+    });
+});
+
+		function addMedicament() {
+  const div = document.createElement('div');
+  div.classList.add('med-item');
+  div.innerHTML = document.querySelector('.med-item').innerHTML;
+  document.getElementById('med-list').appendChild(div);
+}
+ 
+
+	</script>
 	<style>
 		.text-primary, .text-primary a{
 			color: #1c9790 !important;
@@ -116,5 +183,6 @@
 			color: #1c9790 !important;
 		}
 	</style>
+    
 </body>
 </html>

@@ -12,8 +12,7 @@
 	$profile2 	= $_FILES['img']['name'];
     // change profile2 name
     $newName = date('dmYHis').str_replace(" ", "", $profile2);
-
-    // image file directory
+ 
     $target = "../assets/uploads/avatar/".basename($newName);
 
     if(!empty($id)){

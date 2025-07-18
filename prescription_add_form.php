@@ -50,11 +50,38 @@
     									<?php endforeach; ?>
 												</select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="inputResidentName">Doctor Name</label>
-                                                    <input type="text" class="form-control" id="inputResidentName" name="doctor" required>
-                                                    <!-- <small class="form-text text-muted">ex: DELA CRUZ, JUAN V.</small> -->
-                                                </div>
+
+
+
+
+                                               <div class="form-group">
+                <label for="inputPatient">Nom du dr</label>
+                <?php
+                $query1 = "SELECT * FROM tbl_officials";
+                $res1 = $conn->query($query1);
+                $patients1 = [];
+                while ($row1 = $res1->fetch_assoc()) {
+                    $patients1[] = $row1;
+                }
+                ?>
+                <select class="form-control" name="doctor" id="inputPatient" required>
+                    <option value="" disabled selected>-- Sélectionner un dr --</option>
+                    <?php foreach ($patients1 as $p1): ?>
+                        <option value="<?= $p1['name']; ?>"><?= $p1['name']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
                                                 <div class="form-group">
                                                     <label for="inputAge">Medication</label>
                                                     <input type="text" class="form-control" id="inputAge" name="medication" required>
